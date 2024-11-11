@@ -1,0 +1,36 @@
+pip install rich
+
+
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+import random
+
+def generar_combinacion_euromillones():
+    
+    numeros = random.sample(range(1, 51), 5)
+    numeros.sort()
+    
+    # Generar 2 estrellas entre 1 y 12 sin repetición
+    estrellas = random.sample(range(1, 13), 2)
+    estrellas.sort()
+    
+    return numeros, estrellas
+
+def mostrar_combinacion():
+    console = Console()
+    numeros, estrellas = generar_combinacion_euromillones()
+    
+    numeros_text = Text("Números: ", style="bold green")
+    numeros_text.append(", ".join(map(str, numeros)), style="bold yellow")
+    
+    estrellas_text = Text("Estrellas: ", style="bold cyan")
+    estrellas_text.append(", ".join(map(str, estrellas)), style="bold magenta")
+    
+    panel_content = f"{numeros_text}\n{estrellas_text}"
+    panel = Panel(panel_content, title="🌟 ¡Tu Combinación para el Euromillones! 🌟", style="bold blue")
+    
+   
+    console.print(panel)
+
+mostrar_combinacion()
