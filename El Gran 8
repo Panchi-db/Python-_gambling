@@ -1,0 +1,28 @@
+#EL GRAN 8 EN PYTHON
+
+import random
+def lanzar_dados():
+    dado1= random.randrange (1,7)
+    dado2= random.randrange (1,7)
+    return (dado1, dado2)
+
+def mostrar_dados (dado):
+    dado1, dado2= dado
+    print (f'El resultado de la jugada es {dado1}+{dado2}= {sum(dado)}')
+
+valores_logrados = lanzar_dados ()
+mostrar_dados(valores_logrados)
+
+suma_dados= sum (valores_logrados)
+
+if suma_dados == 8 :
+    status_jugador= "Ganaste"
+    print ("WOW")
+elif suma_dados == 7:
+    status_jugador = "Perdiste"
+    print ("¡¡¡NOOOOOO!!!!")
+else:
+    status_jugador = "Siga Jugando"
+    print ("ENCUENTRA AL GRAN 8")
+    
+status_jugador
