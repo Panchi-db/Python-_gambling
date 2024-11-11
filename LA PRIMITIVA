@@ -1,0 +1,42 @@
+  pip install rich
+
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+import random
+
+def generar_combinacion_primitiva():
+    # Generar 6 números entre 1 y 49 sin repetición
+    numeros = random.sample(range(1, 50), 6)
+    numeros.sort()
+    
+    # Generar número complementario entre 1 y 49
+    complementario = random.choice([num for num in range(1, 50) if num not in numeros])
+    
+    # Generar reintegro entre 0 y 9
+    reintegro = random.randint(0, 9)
+  
+    
+    return numeros, complementario, reintegro
+
+def mostrar_combinacion():
+    console = Console()
+    numeros, complementario, reintegro = generar_combinacion_primitiva()
+    
+    # Crear texto con formato para los números
+    numeros_text = Text("Números: ", style="bold green")
+    numeros_text.append(", ".join(map(str, numeros)), style="bold yellow")
+    
+    # Crear texto con formato para el complementario y reintegro
+    complementario_text = Text(f"Complementario: {complementario}", style="bold cyan")
+    reintegro_text = Text(f"Reintegro: {reintegro}", style="bold magenta")
+    
+    # Panel para mostrar la combinación completa
+    panel_content = f"{numeros_text}\n{complementario_text}\n{reintegro_text}"
+    panel = Panel(panel_content, title="🎉 ¡Tu Combinación para La Primitiva! 🎉", style="bold blue")
+    
+    # Imprimir el panel
+    console.print(panel)
+
+# Llamar a la función para mostrar la combinación
+mostrar_combinacion()
